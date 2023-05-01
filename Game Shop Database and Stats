@@ -1,0 +1,36 @@
+/** game store items:
+Xbox (5)
+PlayStation (10)
+Nintendo Switch (15)
+PC (8)
+Vintage Games (20)
+**/
+
+--Create a game store database
+
+CREATE TABLE Games_Stock
+(id INTEGER PRIMARY KEY,
+platform TEXT,
+quantity INTEGER, 
+price_each NUMERIC);
+
+INSERT INTO Games_Stock VALUES 
+(1, "Xbox", 5, 59.99);
+INSERT INTO Games_Stock VALUES (2, "PlayStation", 10, 69.99);
+INSERT INTO Games_Stock VALUES (3, "Nintendo Switch", 15, 49.99);
+INSERT INTO Games_Stock VALUES (4, "PC", 8, 69.99);
+INSERT INTO Games_Stock VALUES (5, "Vintage Games", 20, 19.99);
+
+--display the database ordered by price of each game in stock
+SELECT * FROM Games_Stock
+ORDER BY price_each desc;
+
+--display total amount of complete stock of games
+SELECT SUM(quantity)
+FROM Games_Stock;
+
+--display all games from platforms with a higher quantity of 10 games
+SELECT * FROM Games_Stock WHERE quantity > 10;
+
+--display total price of complete stock of games
+SELECT SUM(price_each) FROM Games_Stock;
