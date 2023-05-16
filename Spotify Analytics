@@ -52,7 +52,7 @@ ORDER BY duration_ms DESC
 LIMIT 10;
 
 #Finally, I created a CTE to calculate the average popularity for the artists in the Spotify data table.
-#Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star"
+#Then, for every artist with an average popularity of 90 or above,
 #I displayed their name with their average popularity, and labeled each as a "Top Star".
 
 WITH popularity_average_CTE AS (
