@@ -47,3 +47,14 @@ WHERE InvoiceDate LIKE '2009%';
 SELECT SUM(Total)
 FROM chinook.invoices
 WHERE InvoiceDate LIKE '2009%';
+
+# For the purchased song tracks with the Artist's name and Invoice ID:
+
+SELECT ar.name as Artist, t.Name as Track, i.InvoiceLineId
+FROM chinook.Invoice_items i
+LEFT JOIN chinook.tracks t 
+ON i.TrackID=t.TrackID
+INNER JOIN chinook.albums a
+ON a.AlbumID=t.AlbumID
+LEFT JOIN chinook.artists ar
+ON ar.ArtistID=a.ArtistID;
