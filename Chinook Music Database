@@ -37,3 +37,13 @@ cust.CustomerId, cust.FirstName, cust.LastName, Inv.Total
 FROM chinook.employees AS emp
 JOIN chinook.customers cust ON cust.SupportRepId=emp.EmployeeId
 JOIN chinook.invoices Inv ON Inv.CustomerId=cust.CustomerId;
+
+# For the sum of invoices from 2009 as well as the total paid for that year:
+
+SELECT COUNT(*)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '2009%';
+
+SELECT SUM(Total)
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '2009%';
