@@ -1,1 +1,25 @@
+# For this project, I downloaded a chinook database
+# which represents a digital media store and
+# opened the dataset in SQLite Studio.
 
+# First, I wanted to list all the Customers of chinook
+# who are not from the US, as well as those from 
+# Brazil with their CustomerId and Email.
+
+SELECT FirstName, LastName, CustomerId, Country
+FROM chinook.customers
+WHERE Country <> 'USA'
+ORDER BY CustomerId;
+
+SELECT FirstName, LastName, CustomerId, Country, Email
+FROM chinook.customers
+WHERE Country = 'Brazil'
+ORDER BY CustomerId;
+
+# Next, I displayed the Invoice information of customers in Brazil.
+
+SELECT customers.FirstName, customers.LastName, 
+invoices.InvoiceId, invoices.InvoiceDate, invoices.BillingCountry
+FROM chinook.customers
+LEFT JOIN chinook.invoices ON customers.CustomerId=invoices.CustomerId
+WHERE invoices.BillingCountry='Brazil';
