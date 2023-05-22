@@ -23,3 +23,17 @@ invoices.InvoiceId, invoices.InvoiceDate, invoices.BillingCountry
 FROM chinook.customers
 LEFT JOIN chinook.invoices ON customers.CustomerId=invoices.CustomerId
 WHERE invoices.BillingCountry='Brazil';
+
+# Then, I wanted to know which Employees held the title of Sales Support Agent
+# and which invoices/Customer they were associated with.
+
+SELECT EmployeeId, LastName, FirstName,
+BirthDate, HireDate
+FROM chinook.employees
+WHERE Title='Sales Support Agent';
+
+SELECT emp.FirstName, emp.LastName, Inv.InvoiceId, 
+cust.CustomerId, cust.FirstName, cust.LastName
+FROM chinook.employees AS emp
+JOIN chinook.customers cust ON cust.SupportRepId=emp.EmployeeId
+JOIN chinook.invoices Inv ON Inv.CustomerId=cust.CustomerId;
