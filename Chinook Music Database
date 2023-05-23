@@ -102,7 +102,16 @@ JOIN chinook.genres ON tracks.GenreId=genres.GenreId
 JOIN chinook.invoice_items inv ON tracks.TrackId=inv.TrackId
 JOIN chinook.invoices ON inv.InvoiceId=invoices.InvoiceId
 GROUP BY tracks.Name
-ORDER BY SUM(inv.UnitPrice) DESC
+ORDER BY SUM(inv.UnitPrice) DESC;
+
+# For the amount of Albums that each Artist has:
+
+SELECT artist.Name, COUNT(albums.Title) AS AlbumCount
+FROM chinook.artists artist
+JOIN chinook.albums albums
+ON artist.ArtistId = albums.ArtistId
+GROUP BY Name
+ORDER BY AlbumCount DESC;
 
 # Finally, I wanted to receive a detailed breakdown of which
 # playlists the tracks appear on, with their genre and artist as well.
